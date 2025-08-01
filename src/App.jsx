@@ -10,14 +10,12 @@ import Dashboard from './pages/Dashboard';
 
 function App() {
   const [user, setUser] = useState(null);
-  const [isGuest, setIsGuest] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
       if (firebaseUser) {
-        setIsGuest(false);
         navigate("/dashboard");
       }
     });
@@ -25,19 +23,13 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  const handleUseAsGuest = () => {
-    setUser(null);
-    setIsGuest(true);
-    navigate("/dashboard");
-  };
-
 
   return (
     <>
     <Routes>
-    <Route path='/' element={<Login handleUseAsGuest={handleUseAsGuest} />} />
+    <Route path='/' element={<Login />} />
     <Route path='/register' element={<Register />} />
-    <Route path='/dashboard' element={<Dashboard user={user} isGuest={isGuest} />} />
+    <Route path='/dashboard' element={<Dashboard user={user} />} />
     </Routes>
     </>
   )

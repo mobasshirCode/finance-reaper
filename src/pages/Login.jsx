@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { auth, googleProvider } from '../firebase/firebaseConfig'
-import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
+import { signInWithEmailAndPassword, signInWithPopup, signInAnonymously, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 
 function Login({ handleUseAsGuest }) {
@@ -24,14 +24,24 @@ function Login({ handleUseAsGuest }) {
             alert(error.message);
         }
     }
+    const handleGuest = async (e) => {
+        if (auth.currentUser) {
+            await signOut(auth);
+        }
+        try {
+            await signInAnonymously(auth);
+        } catch (error) {
+            alert(error.message);
+        }
+    }
 
   return (
     <div>
         <h2>Login</h2>
       <form>
-        <input type="email" placeholder='Email' value={email} required onChange={(e) => setEmail(e.target.value)}></input>
+        <input type="email" autoFocus placeholder='Email' value={email} required onChange={(e) => setEmail(e.target.value)} />
         <br />
-        <input type="password" placeholder='Password' value={password} required onChange={(e) => setPassword(e.target.value)}></input>
+        <input type="password" placeholder='Password' value={password} required onChange={(e) => setPassword(e.target.value)} />
         <br />
         <button type='submit' onClick={handleLogin}>Login</button>
       </form>
@@ -40,7 +50,7 @@ function Login({ handleUseAsGuest }) {
       <br />
         <button onClick={() => navigate("/register")}>Register</button>
         <br />
-        <button onClick={handleUseAsGuest}>Use as Guest</button>
+        <button onClick={handleGuest}>Continue Anonymously</button>
     </div>
   )
 }

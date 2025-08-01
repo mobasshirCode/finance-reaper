@@ -1,9 +1,14 @@
 import React from 'react'
+import { auth } from '../firebase/firebaseConfig'
 
 function Dashboard() {
+    const user = auth.currentUser;
+    
   return (
     <div>
-      <p>Hello, Welcome to the Finance Reaper Dashboard</p>
+      <h2>
+        {user?.isAnonymous ? "Welcome, Guest..!" : `Welcome, ${user.email}`}
+      </h2>
     </div>
   )
 }
