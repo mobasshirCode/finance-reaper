@@ -6,9 +6,13 @@ function AddTransaction() {
     const [title,setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [type, setType] = useState("expense")
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (loading) return;
+        setLoading(true);
+
         const user = auth.currentUser;
         if (!user) return alert("User not logged in.");
         if (!title || !amount || !type) return alert("Invalid Input");
@@ -23,6 +27,8 @@ function AddTransaction() {
         }
         catch (error) {
             alert(error.message);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -36,7 +42,7 @@ function AddTransaction() {
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
             </select>
-            <button type='submit'>Add</button>
+            <button type='submit' disabled={loading}> {loading ? "Wait" : "Add"}</button>
         </form>
     </div>
   )

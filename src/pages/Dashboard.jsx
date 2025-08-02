@@ -2,26 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import AddTransaction from '../components/AddTransaction';
+import TransactionList from '../components/TransactionList';
 
 
 function Dashboard() {
     const user = auth.currentUser;
-    const [transactions, setTransactions] = useState([]);
-
-    useEffect(() => {
-      if (!user) return;
-
-      const q = query(
-        collection(db, "users", user.uid, "transactions")
-      );
-
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-        setTransactions(data);
-      });
-
-      return () => unsubscribe();
-    }, [user]);
     
   return (
     <div style={{padding: "1rem"}}>
@@ -33,6 +18,7 @@ function Dashboard() {
       <AddTransaction />
       <h3>Stats</h3>
       <h3>Transaction List</h3>
+      <TransactionList />
     </div>
   )
 }
