@@ -31,7 +31,7 @@ function Navbar() {
           </>
          ) : (
           <>
-          <span>Welcome, Guest..!</span>
+          <span>Guest Mode</span>
           <button onClick={() => navigate("/")}>Login</button>
           </>
           
