@@ -8,7 +8,7 @@ function TransactionList() {
   const handleDelete = async (id) => {
     const user = auth.currentUser;
       if (!user) return;
-      
+
     const docRef = doc(db, "users", user.uid, "transactions", id);
     await  deleteDoc(docRef);
   };
@@ -35,21 +35,23 @@ function TransactionList() {
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Amount</th>
             <th>Note</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date & Time</th>
           </tr>
         </thead>
         <tbody>
           {transactions.map(tx => (
             <tr key={tx.id}>
-              <td>{tx.createdAt?.toDate().toLocaleString()}</td>
+              <td>{tx.title}</td>
               <td>{tx.type}</td>
+              <td>{tx.category}</td>
               <td>
                 ₹ {tx.amount}
               </td>
-              <td>{tx.title}</td>
+              <td>{tx.createdAt?.toDate().toLocaleString()}</td>
               <td>
                 <button onClick={() => handleDelete(tx.id)}>Delete</button>
               </td>
