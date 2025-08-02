@@ -7,7 +7,7 @@ function Dashboard() {
   return (
     <div>
       <h2>
-        {user?.isAnonymous ? "Welcome, Guest..!" : `Welcome, ${user.email}`}
+        This is the main body of the Dashboard
       </h2>
     </div>
   )

@@ -1,4 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: rgb(2, 2, 37);
   color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: black;
+  margin-bottom: 30px;
+  align-items: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+button {
+  margin-left: 10px;
+  padding: 5px;
 }
