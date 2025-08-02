@@ -3,6 +3,7 @@ import { auth, db } from '../firebase/firebaseConfig'
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import AddTransaction from '../components/AddTransaction';
 import TransactionList from '../components/TransactionList';
+import StatsCard from '../components/StatsCard';
 
 
 function Dashboard() {
@@ -17,6 +18,7 @@ function Dashboard() {
       <h3>Add Transaction</h3>
       <AddTransaction />
       <h3>Stats</h3>
+      <StatsCard />
       <h3>Transaction List</h3>
       <TransactionList />
     </div>

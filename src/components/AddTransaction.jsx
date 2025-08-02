@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore'
 
 function AddTransaction() {
     const [title,setTitle] = useState("");
     const [amount, setAmount] = useState("");
-    const [type, setType] = useState("expense")
+    const [type, setType] = useState("expense");
+    const [customDate, setCustomDate] = useState("");
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -19,7 +20,7 @@ function AddTransaction() {
 
         try {
             await addDoc(collection(db, "users", user.uid, "transactions"), {
-                title, amount: parseFloat(amount), type, createdAt: serverTimestamp(),
+                title, amount: parseFloat(amount), type, createdAt: Timestamp.fromDate(new Date(customDate)),
             });
           setTitle("");
           setAmount("");
@@ -36,6 +37,7 @@ function AddTransaction() {
   return (
     <div>
         <form onSubmit={handleSubmit}>
+            <input type='datetime-local' value={customDate} onChange={(e)=> setCustomDate(e.target.value)} />
             <input type="text" value={title} placeholder='Title (e.g. Salary, Rent)' required onChange={(e) => setTitle(e.target.value)} />
             <input type="number" value={amount} placeholder='Amount' required onChange={(e) => setAmount(e.target.value)} />
             <select value={type} onChange={(e) => setType(e.target.value)}>

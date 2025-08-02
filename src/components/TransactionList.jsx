@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
+import { collection, onSnapshot, query, orderBy, doc, deleteDoc } from 'firebase/firestore'
 
 function TransactionList() {
   const [transactions, setTransactions] = useState([]);
+
+  const handleDelete = async (id) => {
+    const user = auth.currentUser;
+      if (!user) return;
+      
+    const docRef = doc(db, "users", user.uid, "transactions", id);
+    await  deleteDoc(docRef);
+  };
 
   useEffect(() => {
       const user = auth.currentUser;
@@ -42,6 +50,9 @@ function TransactionList() {
                 ₹ {tx.amount}
               </td>
               <td>{tx.title}</td>
+              <td>
+                <button onClick={() => handleDelete(tx.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
