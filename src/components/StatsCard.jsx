@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { onSnapshot, query, collection } from 'firebase/firestore'
 
-function StatsCard() {
+function StatsCard({selectedMonth}) {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
 
@@ -18,17 +18,21 @@ function StatsCard() {
 
       snapshot.forEach((doc) => {
         const data = doc.data();
-        if (data.type === "income") {
-          iSum += Number(data.amount);
-        } else if (data.type === "expense") {
-          eSum += Number(data.amount);
+        const txDate = data.createdAt?.toDate?.();
+
+        if (txDate && txDate.getMonth() === selectedMonth.getMonth() && txDate.getFullYear() === selectedMonth.getFullYear()) {
+          if (data.type === "income") {
+            iSum += Number(data.amount);
+          } else if (data.type === "expense") {
+            eSum += Number(data.amount);
+          }
         }
       });
       setIncome(iSum);
       setExpense(eSum);
     });
     return () => unsubscribe();
-  },[]);
+  },[selectedMonth]);
 
   const balance = income - expense;
 

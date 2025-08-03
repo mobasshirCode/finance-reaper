@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore'
 
@@ -17,8 +17,7 @@ function AddTransaction() {
     const [loading, setLoading] = useState(false);
 
     const incomeCategories = ["Salary", "Refund", "Gift", "Interest", "Lottery", "Other"];
-    const expenseCategories = ["Food", "Rent", "Shopping", "Bills", "Travel", "Health", "Other"];
-
+    const expenseCategories = ["Food", "Drinks", "Rent", "Shopping", "Bills", "Travel", "Health", "Other"];
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -36,6 +35,7 @@ function AddTransaction() {
           setTitle("");
           setAmount("");
           setType("expense");
+          setCategory("");
         }
         catch (error) {
             alert(error.message);

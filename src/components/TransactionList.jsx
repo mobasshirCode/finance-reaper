@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { isSameMonth } from 'date-fns';
 import { auth, db } from '../firebase/firebaseConfig'
 import { collection, onSnapshot, query, orderBy, doc, deleteDoc } from 'firebase/firestore'
 
-function TransactionList() {
+function TransactionList({ selectedMonth }) {
   const [transactions, setTransactions] = useState([]);
 
   const handleDelete = async (id) => {
@@ -23,12 +24,16 @@ function TransactionList() {
       );
 
       const unsubscribe = onSnapshot(q, (snapshot) => {
-        const data = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
-        setTransactions(data);
+        const allData = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}));
+        const filterData = allData.filter((tx) => {
+          const date = tx.createdAt?.toDate?.();
+          return date && isSameMonth(date, selectedMonth)
+        });
+        setTransactions(filterData);
       });
      
     return () => unsubscribe();
-    },[]);
+    },[selectedMonth]);
 
   return (
     <div>

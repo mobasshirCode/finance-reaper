@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { auth, db } from '../firebase/firebaseConfig'
-import { collection, query, where, onSnapshot } from 'firebase/firestore';
+import { auth } from '../firebase/firebaseConfig'
 import AddTransaction from '../components/AddTransaction';
 import TransactionList from '../components/TransactionList';
 import StatsCard from '../components/StatsCard';
+import CatChart from '../components/CatChart';
+import DateSelector from '../components/DateSelector';
 
 
 function Dashboard() {
     const user = auth.currentUser;
+    const [selectedMonth,setSelectedMonth] = useState(new Date());
     
   return (
     <div style={{padding: "1rem"}}>
@@ -17,10 +19,16 @@ function Dashboard() {
       <hr />
       <h3>Add Transaction</h3>
       <AddTransaction />
+        <DateSelector
+        selectedMonth={selectedMonth}
+        setSelectedMonth={setSelectedMonth}
+        />
+        
       <h3>Stats</h3>
-      <StatsCard />
+      <CatChart selectedMonth={selectedMonth}/>
+      <StatsCard selectedMonth={selectedMonth} />
       <h3>Transaction List</h3>
-      <TransactionList />
+      <TransactionList selectedMonth={selectedMonth} />
     </div>
   )
 }
