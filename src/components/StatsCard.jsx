@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { onSnapshot, query, collection } from 'firebase/firestore'
+import '../css/statscard.css'
 
 function StatsCard({selectedMonth}) {
   const [income, setIncome] = useState(0);
@@ -37,10 +38,19 @@ function StatsCard({selectedMonth}) {
   const balance = income - expense;
 
   return (
-    <div>
-      <p><strong>Income : {income}</strong></p>
-      <p><strong>Expense : {expense}</strong></p>
-      <p><strong>Balance : {balance}</strong></p>
+    <div className='stats-card'>
+      <div className='box'>
+      <p className='income'>₹ {income}</p>
+      <p className='title'>Income</p>
+      </div>
+      <div className='box'>
+      <p className='expense'>₹ {expense}</p>
+      <p className='title'>Expense</p>
+      </div>
+      <div className='box'>
+      <p className='balance'>₹ {balance}</p>
+      <p className='title'>Balance</p>
+      </div>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore'
+import '../css/addtransaction.css'
 
 function AddTransaction() {
     //got this format code from google
@@ -36,6 +37,7 @@ function AddTransaction() {
           setAmount("");
           setType("expense");
           setCategory("");
+          setCustomDate(formatDateForInput(new Date()));
         }
         catch (error) {
             alert(error.message);
@@ -45,11 +47,17 @@ function AddTransaction() {
     }
 
   return (
-    <div>
+    <div className='container'>
+        {/* <div className='heading'>Add New Transactions :</div> */}
         <form onSubmit={handleSubmit}>
+            <div className="form-row">
             <input type='datetime-local' value={customDate} onChange={(e)=> setCustomDate(e.target.value)} />
+            </div>
+            <div className="form-row">
             <input type="text" value={title} placeholder='Note (e.g. tea, bus)' required onChange={(e) => setTitle(e.target.value)} />
             <input type="number" value={amount} placeholder='Amount' required onChange={(e) => setAmount(e.target.value)} />
+            </div>
+            <div className="form-row">
             <select value={type} required onChange={(e) => setType(e.target.value)}>
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
@@ -60,7 +68,8 @@ function AddTransaction() {
                     <option key={cat} value={cat}>{ cat }</option>
                 ))}
             </select>
-            <button type='submit' disabled={loading}> {loading ? "Wait" : "Add"}</button>
+            </div>
+            <button className='addbtn' type='submit' disabled={loading}> {loading ? "Wait" : "Add Transaction"}</button>
         </form>
     </div>
   )

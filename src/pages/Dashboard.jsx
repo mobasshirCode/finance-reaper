@@ -17,17 +17,13 @@ function Dashboard() {
         {user?.email ? `Welcome, ${user.email}` : "Welcome, Guest!"}
       </h2>
       <hr />
-      <h3>Add Transaction</h3>
-      <AddTransaction />
         <DateSelector
         selectedMonth={selectedMonth}
         setSelectedMonth={setSelectedMonth}
         />
-        
-      <h3>Stats</h3>
-      <CatChart selectedMonth={selectedMonth}/>
       <StatsCard selectedMonth={selectedMonth} />
-      <h3>Transaction List</h3>
+      <CatChart selectedMonth={selectedMonth}/>
+      <AddTransaction />
       <TransactionList selectedMonth={selectedMonth} />
     </div>
   )

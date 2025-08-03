@@ -3,6 +3,7 @@ import { auth, db } from '../firebase/firebaseConfig'
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import { isSameMonth } from 'date-fns';
 import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from 'recharts';
+import '../css/catchart.css'
 
 const COLORS = [
   '#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1',
@@ -53,10 +54,10 @@ const renderPie = (data, title) => {
   const placeholderData = [{ name: 'No data', value: 1 }];
 
   return (
-    <div style={{ flex: 1, padding: '1rem' }}>
-      <h4 style={{ textAlign: 'center' }}>{title}</h4>
+    <div className='pie-chart'>
+      <h4 style={{ textAlign: 'center'  }}>{title}</h4>
 
-      <ResponsiveContainer width="100%" height={250}>
+      <ResponsiveContainer width="100%" height={320}>
         <PieChart>
           <Pie
             data={isEmpty ? placeholderData : data}
@@ -93,7 +94,7 @@ const renderPie = (data, title) => {
 
   return (
     <>
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+    <div className='chart-container' >
       {renderPie(incomeData, "Income by Category")}
       {renderPie(expenseData, "Expense by Category")}
     </div>
