@@ -12,9 +12,9 @@ function Dashboard() {
     const [selectedMonth,setSelectedMonth] = useState(new Date());
     
   return (
-    <div style={{padding: "1rem"}}>
-      <h2>
-        {user?.email ? `Welcome, ${user.email}` : "Welcome, Guest!"}
+    <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1rem' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '1rem', color: 'white' }}>
+        Welcome to your <span style={{color: '#3b82f6b'}}>Dashboard</span>
       </h2>
       <hr />
         <DateSelector

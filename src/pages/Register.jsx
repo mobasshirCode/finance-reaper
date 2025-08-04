@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { auth, googleProvider } from '../firebase/firebaseConfig'
 import { createUserWithEmailAndPassword, signInWithPopup, signInAnonymously } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import '../css/register.css'
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -31,7 +32,8 @@ function Register() {
     }
 
   return (
-    <div>
+    <div className='reg-container'>
+      <div className="reg-box">
       <h2>Sign up</h2>
       <form>
         <input autoFocus type="email" placeholder='Email' value={email} required onChange={(e) => setEmail(e.target.value)} />
@@ -47,6 +49,7 @@ function Register() {
       <br />
       <p>Already have an account? </p>
         <button onClick={() => navigate("/")}>Login</button>
+    </div>
     </div>
   )
 }

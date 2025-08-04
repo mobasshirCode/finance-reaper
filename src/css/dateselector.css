@@ -1,0 +1,18 @@
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 1rem 0;
+}
+
+.date input[type="month"] {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 8rem;
+  color: #3b82f6;
+  background: white;
+  cursor: pointer;
+}

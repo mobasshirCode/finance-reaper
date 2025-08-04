@@ -1,36 +1,46 @@
 .stats-card {
-  margin-bottom: 1rem;
+  margin: 1rem auto;
   display: flex;
   justify-content: space-around;
   width: 80%;
-  margin: auto;
+  flex-wrap: wrap;
 }
+
 .box {
   background: white;
-  margin: 3px;
-  min-width: 20vw;
-  max-width: 30vw;
+  margin: 6px;
+  min-width: 220px;
+  width: 28%;
+  max-width: 300px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 1rem; 
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
 }
+.box:hover {
+  scale: 1.05;
+}
+
 .title {
-    color: black;
+  color: black;
 }
+
 .income {
   font-size: 25px;
   color: green;
   font-weight: bold;
 }
+
 .expense {
-    font-size: 25px;
+  font-size: 25px;
   color: red;
   font-weight: bold;
 }
+
 .balance {
-    font-size: 25px;
+  font-size: 25px;
   color: #333;
   font-weight: bold;
 }

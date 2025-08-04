@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Navbar from './components/Navbar';
+import About from './pages/About';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <Navbar />
     <Routes>
     <Route path='/' element={<Login />} />
+    <Route path='/about' element={<About />} />
     <Route path='/register' element={<Register />} />
     <Route path='/dashboard' element={user ? <Dashboard user={user} /> : <Login />} />
     </Routes>

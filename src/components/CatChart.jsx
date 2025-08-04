@@ -55,7 +55,7 @@ const renderPie = (data, title) => {
 
   return (
     <div className='pie-chart'>
-      <h4 style={{ textAlign: 'center'  }}>{title}</h4>
+      <h4 style={{ textAlign: 'center', color: 'white'  }}>{title}</h4>
 
       <ResponsiveContainer width="100%" height={320}>
         <PieChart>

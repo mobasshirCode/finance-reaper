@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/dateselector.css'
 
 function DateSelector({ selectedMonth, setSelectedMonth }) {
   const handleChange = (e) => {
@@ -8,7 +9,7 @@ function DateSelector({ selectedMonth, setSelectedMonth }) {
   };
 
   return (
-    <div>
+    <div className='date'>
       <input
         type="month"
         value={`${selectedMonth.getFullYear()}-${String(selectedMonth.getMonth() + 1).padStart(2, '0')}`}

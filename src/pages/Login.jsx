@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { auth, googleProvider } from '../firebase/firebaseConfig'
 import { signInWithEmailAndPassword, signInWithPopup, signInAnonymously, signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
+import '../css/login.css'
 
 function Login({ handleUseAsGuest }) {
     const [email, setEmail] = useState("");
@@ -36,7 +37,8 @@ function Login({ handleUseAsGuest }) {
     }
 
   return (
-    <div>
+    <div className='login-container'>
+        <div className="login-box">
         <h2>Login</h2>
       <form>
         <input type="email" autoFocus placeholder='Email' value={email} required onChange={(e) => setEmail(e.target.value)} />
@@ -51,6 +53,7 @@ function Login({ handleUseAsGuest }) {
         <button onClick={() => navigate("/register")}>Register</button>
         <br />
         <button onClick={handleGuest}>Continue Anonymously</button>
+    </div>
     </div>
   )
 }
