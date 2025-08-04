@@ -4,7 +4,7 @@ import { auth } from '../firebase/firebaseConfig'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import '../css/navbar.css'
-import logo from '../assets/logo.png'
+import logo from '../assets/logo.PNG'
 
 function Navbar() {
     const user = auth.currentUser;
