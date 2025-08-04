@@ -3,7 +3,7 @@ import { auth, db } from '../firebase/firebaseConfig'
 import { collection, onSnapshot, query } from 'firebase/firestore'
 import { isSameMonth } from 'date-fns';
 import { PieChart, Pie, Tooltip, Cell, Legend, ResponsiveContainer } from 'recharts';
-import '../css/catchart.css'
+import '../css/catChart.css'
 
 const COLORS = [
   '#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#8dd1e1',

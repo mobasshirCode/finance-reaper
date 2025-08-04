@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { auth, db } from '../firebase/firebaseConfig'
 import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore'
-import '../css/addtransaction.css'
+import '../css/addTransaction.css'
 
 function AddTransaction() {
     //got this format code from google
