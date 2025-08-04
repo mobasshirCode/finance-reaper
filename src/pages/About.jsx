@@ -1,22 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { MdOutlineArrowBack } from "react-icons/md";
 
 function About() {
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem',color:'white' }}>
-      <h1 style={{ textAlign: 'center', marginBottom: '1rem' }}>About Finance Reaper</h1>
+      <NavLink to="/dashboard" className={'abt'}>Back to Dashboard</NavLink>
+      <h1 style={{ textAlign: 'center', marginBottom: '1rem', marginTop: '1rem' }}>About Finance Reaper</h1>
       <p style={{ lineHeight: '1.8' }}>
-        <strong>Finance Reaper</strong> is a personal finance tracker I created to help individuals stay in control of their daily expenses and income. 
-        The idea for this project came from a personal need — managing money manually in a notebook or spreadsheet was inefficient, especially for recurring expenses.
-      </p>
-
-      <h2 style={{ marginTop: '2rem' }}>🎯 Purpose</h2>
-      <p style={{ lineHeight: '1.8' }}>
-        The purpose of this project is to:
-        <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.8' }}>
-          <li>Simplify daily income and expense tracking</li>
-          <li>Provide a visual breakdown of spending categories</li>
-          <li>Help users make smarter financial decisions based on their data</li>
-        </ul>
+        <strong>Finance Reaper</strong> is a personal finance tracker I created to fulfill the final requirement of the <strong>CS50</strong> course. I will submit this as the Final Project.
       </p>
 
       <h2 style={{ marginTop: '2rem' }}>🛠️ Key Features</h2>
@@ -37,12 +29,12 @@ function About() {
         <li><strong>CSS</strong> – for styling and responsive design</li>
       </ul>
 
-      <h2 style={{ marginTop: '2rem' }}>📌 Future Improvements</h2>
+      <h2 style={{ marginTop: '2rem' }}>📌 Tips</h2>
       <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.8' }}>
-        <li>Add support for monthly budgets</li>
-        <li>Enable export of reports as PDF/CSV</li>
-        <li>Implement charts showing trends over time</li>
-        <li>Support user-defined categories</li>
+        <li>You can Register/SignUp to save and access your data accross devices</li>
+        <li>Even in guest mode your data will remain in the same device</li>
+        <li>Just visit the website with the same browser (but not in incognito mode)</li>
+        <li>Guest data will be lost if you clear browser cookies/local storage</li>
       </ul>
 
       <p style={{ marginTop: '2rem', fontStyle: 'italic' }}>

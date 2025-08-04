@@ -12,6 +12,12 @@ nav {
 .left {
   font-size: 1.5rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.left img {
+  height: 1.2rem;
 }
 
 .super-right {

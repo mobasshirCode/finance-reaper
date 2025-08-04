@@ -4,6 +4,7 @@ import { auth } from '../firebase/firebaseConfig'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import '../css/navbar.css'
+import logo from '../assets/logo.png'
 
 function Navbar() {
     const user = auth.currentUser;
@@ -22,7 +23,7 @@ function Navbar() {
 
   return (
     <nav>
-      <div className='left'>Finance Reaper</div>
+      <div className='left'><img src={logo} />Finance Reaper</div>
       <div className="super-right">
         <div>
         <NavLink to="/about" className='abt'>About</NavLink>

@@ -29,14 +29,14 @@
 
 .form-row input:focus,
 .form-row select:focus {
-  border-color: #8884d8;
+  border-color: #3b82f6;
 }
 
 .addbtn {
   padding: 0.8rem 1rem;
   font-size: 1rem;
   border-radius: 8px;
-  background-color: #8884d8;
+  background-color: #3b82f6;
   color: white;
   border: none;
   cursor: pointer;
@@ -46,7 +46,7 @@
 }
 
 .addbtn:hover {
-  background-color: #6c6fd3;
+  background-color: #2563eb;
 }
 
 .addbtn:disabled {

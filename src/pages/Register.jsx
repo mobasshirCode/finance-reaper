@@ -3,6 +3,7 @@ import { auth, googleProvider } from '../firebase/firebaseConfig'
 import { createUserWithEmailAndPassword, signInWithPopup, signInAnonymously } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import '../css/register.css'
+import { FcGoogle } from "react-icons/fc";
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ function Register() {
         try {
             await signInWithPopup(auth, googleProvider);
         } catch (error) {
-            alert(error.message);
+            console.log(error.message);
         }
     }
 
@@ -35,17 +36,17 @@ function Register() {
     <div className='reg-container'>
       <div className="reg-box">
       <h2>Sign up</h2>
-      <form>
+      <form  onSubmit={handleRegister}>
         <input autoFocus type="email" placeholder='Email' value={email} required onChange={(e) => setEmail(e.target.value)} />
         <br />
         <input type="password" placeholder='Password' value={password} required onChange={(e) => setPassword(e.target.value)} />
         <br />
         <input type="password" placeholder='Confirm Password' value={cpassword} required onChange={(e) => setCpassword(e.target.value)} />
         <br />
-        <button onClick={handleRegister}>Register</button>
+        <button type='submit'>Sign Up</button>
       </form>
       <br />
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <button onClick={signInWithGoogle}>Sign in with Google <FcGoogle /></button>
       <br />
       <p>Already have an account? </p>
         <button onClick={() => navigate("/")}>Login</button>
