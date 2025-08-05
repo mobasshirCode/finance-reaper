@@ -1,12 +1,30 @@
-# React + Vite
+# 💰 Finance Reaper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Finance Reaper is a personal finance tracker built with **React**, **Firebase**, and **Recharts**.  
+This is the Final Project for my CS50 courese by Harvard.
 
-Currently, two official plugins are available:
+It helps users track their income and expenses, view category-wise charts, and analyze monthly stats.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
+- 📅 **Month Selector** – View transactions and stats for a selected month  
+- 💵 **Add Transactions** – Record income or expenses with custom date and category  
+- 📊 **Stats Cards** – Display total income, expense, and balance  
+- 🥧 **Category Charts** – Visualize income & expense breakdown  
+- 📜 **Transaction List** – View, filter, and delete transactions  
+- 🔑 **Authentication** – Sign up, log in, Google login, or use anonymous mode  
+- 📱 **Responsive Design** – Works on mobile and desktop  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** React (Vite)
+- **Backend:** Firebase Authentication + Firestore
+- **Charts:** Recharts
+- **Hosting:** Firebase
+
+---
+
+##  Live Preview
+ https://finance-reaper.web.app
